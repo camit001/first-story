@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;500&family=EB+Garamond:ital@1&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #f5efe6;
+      --warm: #c9a96e;
+      --dark: #1a1208;
+      --rose: #d4856a;
+      --dust: rgba(245, 239, 230, 0.06);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--warm);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, opacity 0.3s;
+      mix-blend-mode: screen;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(201, 169, 110, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.25s ease, width 0.3s, height 0.3s;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0d0a05 0%, #1e1409 50%, #120d06 100%);
+    }
+
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 180px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(10, 7, 2, 0.85) 100%);
+      pointer-events: none;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.12;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+
+    .orb1 {
+      width: 500px;
+      height: 500px;
+      background: var(--rose);
+      top: -100px;
+      left: -150px;
+      animation-duration: 22s;
+    }
+
+    .orb2 {
+      width: 400px;
+      height: 400px;
+      background: var(--warm);
+      bottom: -80px;
+      right: -100px;
+      animation-duration: 16s;
+      animation-delay: -8s;
+    }
+
+    .orb3 {
+      width: 300px;
+      height: 300px;
+      background: #a06f8c;
+      top: 40%;
+      left: 50%;
+      animation-duration: 19s;
+      animation-delay: -4s;
+    }
+
+    @keyframes drift {
+      from {
+        transform: translate(0, 0) scale(1);
+      }
+
+      to {
+        transform: translate(40px, 30px) scale(1.1);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+      animation: heroReveal 2.5s ease forwards;
+    }
+
+    @keyframes heroReveal {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.5em;
+      color: var(--warm);
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      opacity: 0.8;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: 0.06em;
+      background: linear-gradient(180deg, #f5efe6 0%, #c9a96e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      color: rgba(245, 239, 230, 0.55);
+      letter-spacing: 0.08em;
+      margin-bottom: 3rem;
+    }
+
+    .hero-line {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, var(--warm), transparent);
+      margin: 0 auto;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.4;
+        transform: scaleY(1)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scaleY(1.1)
+      }
+    }
+
+    /* Chapter nav */
+    .chapter-nav {
+      position: fixed;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .chapter-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(201, 169, 110, 0.3);
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .chapter-dot.active,
+    .chapter-dot:hover {
+      background: var(--warm);
+      transform: scale(1.5);
+    }
+
+    /* CHAPTER */
+    .chapter {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    .chapter:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .chapter-image-panel {
+      position: relative;
+      flex: 0 0 58%;
+      overflow: hidden;
+    }
+
+    .chapter:nth-child(even) .chapter-image-panel {
+      flex: 0 0 55%;
+    }
+
+    .chapter-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(0.15) contrast(1.05) brightness(0.88);
+      transition: transform 8s ease, filter 1s ease;
+      transform: scale(1.06);
+    }
+
+    .chapter:hover .chapter-img {
+      transform: scale(1);
+      filter: sepia(0.05) contrast(1.08) brightness(0.95);
+    }
+
+    .chapter-img-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a130a, #0d0a05);
+      border: 1px dashed rgba(201, 169, 110, 0.2);
+      color: rgba(201, 169, 110, 0.4);
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      gap: 1rem;
+    }
+
+    .placeholder-icon {
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+
+    /* Cinematic letterbox bars */
+    .chapter-image-panel::before,
+    .chapter-image-panel::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: clamp(30px, 5vh, 60px);
+      background: var(--dark);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .chapter-image-panel::before {
+      top: 0;
+    }
+
+    .chapter-image-panel::after {
+      bottom: 0;
+    }
+
+    .chapter-image-panel .grain {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      background-size: 150px;
+      z-index: 4;
+      opacity: 0.35;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+
+    .chapter-number-bg {
+      position: absolute;
+      bottom: clamp(40px, 7vh, 80px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(5rem, 12vw, 10rem);
+      color: rgba(255, 255, 255, 0.04);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      z-index: 2;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .date-stamp {
+      position: absolute;
+      bottom: clamp(40px, 7vh, 75px);
+      right: 1.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      color: rgba(201, 169, 110, 0.5);
+      z-index: 5;
+      writing-mode: vertical-rl;
+    }
+
+    .chapter-text-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(3rem, 6vw, 7rem) clamp(2rem, 5vw, 6rem);
+      position: relative;
+      background: var(--dark);
+    }
+
+    .chapter-text-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(201, 169, 110, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .chapter-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.5em;
+      color: var(--warm);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0.7;
+    }
+
+    .chapter-heading {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--cream);
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .chapter-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(to right, var(--warm), transparent);
+      margin-bottom: 2rem;
+    }
+
+    .chapter-body {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      line-height: 1.95;
+      color: rgba(245, 239, 230, 0.65);
+      font-weight: 300;
+      max-width: 420px;
+    }
+
+    .chapter-body em {
+      font-style: italic;
+      color: rgba(245, 239, 230, 0.85);
+    }
+
+    .chapter-text-panel .quote-mark {
+      position: absolute;
+      top: 3rem;
+      right: 2rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 8rem;
+      color: rgba(201, 169, 110, 0.07);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    /* INTERLUDE */
+    .interlude {
+      position: relative;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .interlude-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.35) sepia(0.3);
+      transform: scale(1.05);
+      transition: transform 10s ease;
+    }
+
+    .interlude:hover .interlude-bg {
+      transform: scale(1);
+    }
+
+    .interlude-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, var(--dark) 0%, transparent 25%, transparent 75%, var(--dark) 100%);
+    }
+
+    .interlude-bars::before,
+    .interlude-bars::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: clamp(40px, 7vh, 80px);
+      background: var(--dark);
+      z-index: 2;
+    }
+
+    .interlude-bars::before {
+      top: 0;
+    }
+
+    .interlude-bars::after {
+      bottom: 0;
+    }
+
+    .interlude-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .interlude-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3.5vw, 2.5rem);
+      color: var(--cream);
+      line-height: 1.6;
+      max-width: 700px;
+      text-shadow: 0 2px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .interlude-attribution {
+      margin-top: 1.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--warm);
+      opacity: 0.7;
+    }
+
+    /* FINALE */
+    .finale {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--dark) 0%, #0a0603 100%);
+    }
+
+    .finale-content {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      padding: 4rem 2rem;
+    }
+
+    .finale-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 6vw, 5rem);
+      font-weight: 400;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--warm) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2rem;
+      letter-spacing: 0.1em;
+    }
+
+    .finale-text {
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: rgba(245, 239, 230, 0.5);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .finale-ornament {
+      margin: 3rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      color: var(--warm);
+      opacity: 0.5;
+    }
+
+    .finale-ornament::before,
+    .finale-ornament::after {
+      content: '';
+      width: 80px;
+      height: 1px;
+      background: var(--warm);
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.15s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.45s;
+    }
+
+    /* PROGRESS BAR */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--rose), var(--warm));
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+
+    @media (max-width: 768px) {
+
+      .chapter,
+      .chapter:nth-child(even) {
+        flex-direction: column;
+      }
+
+      .chapter-image-panel,
+      .chapter:nth-child(even) .chapter-image-panel {
+        flex: 0 0 55vw;
+        height: 55vw;
+        min-height: 260px;
+      }
+
+      .chapter-img-placeholder {
+        min-height: 260px;
+      }
+
+      .chapter-number-bg {
+        font-size: 5rem;
+      }
+
+      .chapter-nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="chapter-nav" id="chapterNav"></nav>
+
+  <!-- HERO -->
+  <section class="hero" id="section-0">
+    <div class="hero-bg"></div>
+    <div class="hero-grain"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">A new story in frames</p>
+      <!-- ✏️ Edit your title here -->
+      <h1 class="hero-title">Your Story</h1>
+      <!-- ✏️ Edit your subtitle here -->
+      <p class="hero-subtitle">"Some stories are written in the stars, others in the heart."</p>
+      <div class="hero-line"></div>
+    </div>
+  </section>
+
+  <!--
+  ════════════════════════════════════════════════════
+  HOW TO USE THIS TEMPLATE
+  ════════════════════════════════════════════════════
+  1. Replace <div class="chapter-img-placeholder">...</div>
+     with: <img class="chapter-img" src="YOUR_IMAGE.jpg" alt="description">
+
+  2. Edit chapter-label, chapter-heading, chapter-body text.
+
+  3. For interlude backgrounds, replace the style="background:..." 
+     with: style="background-image: url('YOUR_WIDE_IMAGE.jpg')"
+
+  4. To add more chapters, duplicate any <section class="chapter"> block.
+     Even-numbered ones auto-mirror (image on right).
+  ════════════════════════════════════════════════════
+-->
+
+  <!-- CHAPTER 1 -->
+  <section class="chapter" id="section-1">
+    <div class="chapter-image-panel">
+      <img class="chapter-img" src="onone.JPG" alt="Chapter 1">
+      <!-- <div class="chapter-img-placeholder">
+      <span class="placeholder-icon">🎞</span>
+      <span>Add Your Image Here</span>
+      <span style="font-size:0.5rem;opacity:0.4;letter-spacing:0.15em">Replace with &lt;img class="chapter-img" src="one.JPG"&gt;</span>
+    </div> -->
+      <div class="grain"></div>
+      <div class="chapter-number-bg">I</div>
+      <div class="date-stamp">Chapter · I</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter One</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">The Promise</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+        One year ago, on this very day, two beautiful souls promised to walk together — not just in happiness, but in
+        every season of life. 
+        <em>Not just as husband and wife, but as partners, best friends, and each other's forever
+        home.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 2 (mirrored) -->
+  <section class="chapter" id="section-2">
+    <div class="chapter-image-panel">
+      <div class="chapter-img-placeholder">
+        <span class="placeholder-icon">🎞</span><span><img class="chapter-img" src="two.JPG" alt="Chapter 2"></span>
+      </div>
+      <div class="grain"></div>
+      <div class="chapter-number-bg">II</div>
+      <div class="date-stamp">Chapter · II</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter Two</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">The Wedding Day Magic</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+        I still remember the happiness in the air, the excitement, the smiles that wouldn’t fade, and the way you both looked at each other — with trust, excitement, and a promise of <strong>always.</strong>    
+   <em>Tell it the way only you two remember it.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERLUDE 1 -->
+  <div class="interlude interlude-bars" id="section-int1">
+    <!-- REPLACE style with: style="background-image: url('wide-image.jpg')" -->
+    <div class="interlude-bg" style="background: linear-gradient(135deg, #1a0e07, #0d0a05);"></div>
+    <div class="interlude-overlay"></div>
+    <div class="interlude-content reveal">
+      <p class="interlude-quote">"In all the world, there is no heart for me like yours. In all the world, there is no
+        love for you like mine."</p>
+      <p class="interlude-attribution">— Maya Angelou</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 3 -->
+  <section class="chapter" id="section-3">
+    <div class="chapter-image-panel">
+      <div class="chapter-img-placeholder">
+        <span class="placeholder-icon">🎞</span><span><img class="chapter-img" src="three.JPG" alt="Chapter 3"></span>
+      </div>
+      <div class="grain"></div>
+      <div class="chapter-number-bg">III</div>
+      <div class="date-stamp">Chapter · III</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter Three</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">More Than a Wedding</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+        Everyone could see that this was more than just a wedding… 
+        It wasn’t just a ceremony; it was the start of a story that was meant to be written with love,
+         it was the beginning of a lifelong friendship. 
+        <em>The time you will never forget.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 4 (mirrored) -->
+  <section class="chapter" id="section-4">
+    <div class="chapter-image-panel">
+      <div class="chapter-img-placeholder">
+        <span class="placeholder-icon">🎞</span><span><img class="chapter-img" src="four.jpg" alt="Chapter 4"></span>
+      </div>
+      <div class="grain"></div>
+      <div class="chapter-number-bg">IV</div>
+      <div class="date-stamp">Chapter · IV</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter Four</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">The First Year</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+        And today, one year later, that promise has turned into countless memories <em>— shared laughter, small fights, late-night talks, silent understanding, and unconditional support. 
+        </em>
+      </p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 5 -->
+  <section class="chapter" id="section-5">
+    <div class="chapter-image-panel">
+      <div class="chapter-img-placeholder">
+        <span class="placeholder-icon">🎞</span><span><img class="chapter-img" src="five.jpg" alt="Chapter 5"></span>
+      </div>
+      <div class="grain"></div>
+      <div class="chapter-number-bg">V</div>
+      <div class="date-stamp">Chapter · V</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter Five</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">Little Moments</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+That story has grown into beautiful everyday moments — morning smiles, shared responsibilities, small arguments followed by laughter, love, and understanding that only the two of you truly know. 
+  <em>These are some chapters no one else will ever
+          read but you have to deal with.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERLUDE 2 -->
+  <div class="interlude interlude-bars" id="section-int2">
+    <div class="interlude-bg" style="background: linear-gradient(135deg, #120a06, #1a100b);"></div>
+    <div class="interlude-overlay"></div>
+    <div class="interlude-content reveal">
+      <p class="interlude-quote">"You are my today and all of my tomorrows."</p>
+      <p class="interlude-attribution">— Leo Christopher</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 6 (mirrored) -->
+  <section class="chapter" id="section-6">
+    <div class="chapter-image-panel">
+      <div class="chapter-img-placeholder">
+        <span class="placeholder-icon">🎞</span><span><img class="chapter-img" src="six.jpeg" alt="Chapter 6"></span>
+      </div>
+      <div class="grain"></div>
+      <div class="chapter-number-bg">VI</div>
+      <div class="date-stamp">Chapter · VI</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter Six</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">Building a Home</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+In just one year, you both have built a home filled with warmth, respect, and love. A bond that feels strong, comforting, and unbreakable.      </p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 7 -->
+  <section class="chapter" id="section-7">
+    <div class="chapter-image-panel">
+      <div class="chapter-img-placeholder">
+        <span class="placeholder-icon">🎞</span><span><img class="chapter-img" src="seven.jpg" alt="Chapter 7"></span>
+      </div>
+      <div class="grain"></div>
+      <div class="chapter-number-bg">VII</div>
+      <div class="date-stamp">Chapter · VII</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter Seven</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">For My Didi</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+Didi, seeing you happy means everything to me. Watching you so joyful in this new chapter of life makes my heart proud and peaceful. You’ve always filled our lives with love and care.      </p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 8 (mirrored) -->
+  <section class="chapter" id="section-8">
+    <div class="chapter-image-panel">
+      <div class="chapter-img-placeholder">
+        <span class="placeholder-icon">🎞</span><span><img class="chapter-img" src="eight.JPG" alt="Chapter 8"></span>
+      </div>
+      <div class="grain"></div>
+      <div class="chapter-number-bg">VIII</div>
+      <div class="date-stamp">Chapter · VIII</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter Eight</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">For My Jiju</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+Jija ji, thank you for being her strength, her partner, and such a wonderful addition to our family. It’s comforting to see her with someone who values, supports, and walks beside her with respect and affection.      </p>
+    </div>
+  </section>
+
+  <!-- INTERLUDE 3 -->
+  <div class="interlude interlude-bars" id="section-int3">
+    <div class="interlude-bg" style="background: linear-gradient(135deg, #0d0a05, #1e150a);"></div>
+    <div class="interlude-overlay"></div>
+    <div class="interlude-content reveal">
+      <p class="interlude-quote">"Whatever our souls are made of, his and mine are the same."</p>
+      <p class="interlude-attribution">— Emily Brontë</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 9 -->
+  <section class="chapter" id="section-9">
+    <div class="chapter-image-panel">
+      <div class="chapter-img-placeholder">
+        <span class="placeholder-icon">🎞</span><span><img class="chapter-img" src="nine.JPG" alt="Chapter 9"></span>
+      </div>
+      <div class="grain"></div>
+      <div class="chapter-number-bg">IX</div>
+      <div class="date-stamp">Chapter · IX</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter Nine</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">The Future Ahead</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+        May this first anniversary be just the beginning of a lifetime filled with love, growth, success, and togetherness. May your journey always be full of laughter, patience, and endless blessings.
+        <em>And yet — it's
+          ours.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 10 (mirrored) -->
+  <section class="chapter" id="section-10">
+    <div class="chapter-image-panel">
+      <div class="chapter-img-placeholder">
+        <span class="placeholder-icon">🎞</span><span><img class="chapter-img" src="ten.JPG" alt="Chapter 10"></span>
+      </div>
+      <div class="grain"></div>
+      <div class="chapter-number-bg">X</div>
+      <div class="date-stamp">Chapter · X</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter Ten</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">A Beautiful Forever</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+        Happy 1st Marriage Anniversary to both of you.
+May your bond grow deeper, your smiles grow brighter, and your story always remain this beautiful 
+<em>— becoming even more magical with every passing year.
+ </em>
+      </p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 11 -->
+  <section class="chapter" id="section-11">
+    <div class="chapter-image-panel">
+      <div class="chapter-img-placeholder">
+        <span class="placeholder-icon">🎞</span><span><img class="chapter-img" src="one.JPG" alt="Chapter 11"></span>
+      </div>
+      <div class="grain"></div>
+      <div class="chapter-number-bg">XI</div>
+      <div class="date-stamp">Chapter · XI</div>
+    </div>
+    <div class="chapter-text-panel">
+      <div class="quote-mark">"</div>
+      <p class="chapter-label reveal">Chapter Eleven</p>
+      <h2 class="chapter-heading reveal reveal-delay-1">A New Beginning</h2>
+      <div class="chapter-divider reveal reveal-delay-2"></div>
+      <p class="chapter-body reveal reveal-delay-3">
+Every beginning holds the seed of something new. <br>
+Every beginning carries a spark of a new journey. <br>
+Today, you stand at the doorway of your own beautiful story. <br>
+
+The page is blank <em>— write it with courage.</em> <br>
+The path is yours <em>— walk it with confidence.</em> <br>
+The life is yours <em>— fill it with the happiness you choose.</em> <br>
+
+May your dreams be bigger than your fears,
+And your love stronger than every challenge. <br>
+
+<em>Live the life you love, and love the life you live.</em>
+     </p>
+    </div>
+  </section>
+
+  <!-- FINALE -->
+  <section class="finale" id="section-finale">
+    <div class="finale-content">
+      <div class="finale-ornament">✦</div>
+      <!-- ✏️ Edit your ending here -->
+      <h2 class="finale-title reveal">Always</h2>
+      <p class="finale-text reveal reveal-delay-1">
+        <em>To be continued — in every morning, every quiet evening, every ordinary day made extraordinary by you.</em>
+      </p>
+      <div class="finale-ornament reveal reveal-delay-2">✦</div>
+    </div>
+  </section>
+
+  <script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      setTimeout(() => {
+        ring.style.left = e.clientX + 'px';
+        ring.style.top = e.clientY + 'px';
+      }, 60);
+    });
+
+    // Progress bar
+    const bar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+      bar.style.width = pct + '%';
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Nav dots
+    const sections = Array.from(document.querySelectorAll('[id^="section-"]'));
+    const nav = document.getElementById('chapterNav');
+    sections.forEach((sec, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'chapter-dot';
+      dot.setAttribute('aria-label', 'Go to section ' + (i + 1));
+      dot.addEventListener('click', () => sec.scrollIntoView({ behavior: 'smooth' }));
+      nav.appendChild(dot);
+    });
+    const dots = nav.querySelectorAll('.chapter-dot');
+    const navObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = sections.indexOf(e.target);
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[idx]) dots[idx].classList.add('active');
+        }
+      });
+    }, { threshold: 0.5 });
+    sections.forEach(s => navObs.observe(s));
+  </script>
+</body>
+
+</html>
